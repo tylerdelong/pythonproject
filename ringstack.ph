@@ -54,7 +54,7 @@ block5 = pygame.transform.scale(block5, polesize)
 block6 = pygame.transform.scale(block6, polesize)
 
 #dict for values
-blval = {block1 : 1, block2 : 2, block3 : 3, block4 : 4, block5 : 5, block6 : 6,}
+blval = {block1 : 1, block2 : 2, block3 : 3, block4 : 4, block5 : 5, block6 : 6}
 
 def reset():
     global pltb1, pltb2, pltb3, held, wpole, horiz, xpos, done, dela
@@ -252,14 +252,14 @@ def win():
     pygame.display.flip()
 
 def auto():
-    place1tor = [up(), right(), down()]
-    place1to2r = [up(), right(), right(), down()]
-    place1tol = [up(), left(), down()]
-    place1to2l = [up(), left(), left(), down()]
-    move1r = [right()]
-    move2r = [right(), right()]
-    move1l = [left()]
-    move2l = [left(), left()]
+    place1tor = [up, right, down]
+    place1to2r = [up, right, right, down]
+    place1tol = [up, left, down]
+    place1to2l = [up, left, left, down]
+    move1r = [right]
+    move2r = [right, right]
+    move1l = [left]
+    move2l = [left, left]
     """auto = [up(), right(), down(),
     left(), up(), right(), right(), down(), 
     left(), up(), right(), down(), 
@@ -268,8 +268,9 @@ def auto():
     right(), right(), up(), left(), down()]"""
     aut = [place1tor, move1l, place1to2r, move1l, place1tor, move2l, place1tor, move1r, place1to2l, move2r, place1tol]
     for i in aut:
-        i
-        refresh()
+        for x in i:
+            x()
+            refresh()
 
 reset()   
 main()
